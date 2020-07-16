@@ -12,13 +12,25 @@ class UserEdDelController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'user-type' => 'required|boolean',
+            'user_type' => 'required|boolean',
         ]);
         
+        
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'user_type' => $request->user_type,
+        ]);
+        return redirect()->back();
     }
     public function delete(Request $request,$id){
         $user = User::find($id);
         $user->delete();
         return redirect()->back();
+    }
+    public function show($id){
+        $user = User::find($id);
+        return view('Admin.user.edit',compact('user'));
     }
 }

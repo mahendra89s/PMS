@@ -27,7 +27,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 
     Route::group(['prefix' => 'user-edit'],function(){
-        Route::post('/{id}',function($id){
+        Route::get('/{id}',function($id){
             $user = User::find($id);
             return view('Admin.user.edit',compact('user'));
         })->name('user.edit');

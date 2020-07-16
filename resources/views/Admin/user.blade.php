@@ -29,7 +29,10 @@
                         User Type
                       </th>
                       <th class="text-right">
-                        Action
+                        Edit
+                      </th>
+                      <th class="text-right">
+                        Delete
                       </th>
                     </thead>
                     <tbody>
@@ -43,13 +46,24 @@
                           {{ $user->email }}
                         </td>
                         <td>
-                          {{ $user->user_type }}
+                          <?php
+                                if($user->user_type == 1){
+                                  $user1 = 'ADMIN';
+                                }
+                                else{
+                                  $user1 = 'USER';
+                                }
+                          ?>
+                          {{ $user1 }}
                         </td>
                         <td class="text-right">
-                          <form action="{{ route('user.edit',['id' => $user->id]) }}" method='POST'>
+                          <form action="{{ route('user.edit',['id' => $user->id]) }}" method='GET'>
                             @csrf
                             <button type="submit" class="btn btn-warning">Edit</button>
                           </form>
+                          
+                        </td>
+                        <td class="text-right">
                           <form action="{{ route('user.delete',['id' => $user->id]) }}" method='POST'>
                             @csrf
                             <button type="submit" class="btn btn-danger">Delete</button>

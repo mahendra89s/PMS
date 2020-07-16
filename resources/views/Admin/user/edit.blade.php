@@ -53,8 +53,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">User Type (1:Admin 0:User)</label>
-                            <input type="text" name="user-type" class="form-control" id="exampleFormControlInput1" value="{{ $user->user_type }}">
-                            @error('user-type')
+                            <input type="text" name="user_type" class="form-control" id="exampleFormControlInput1" value="{{ $user->user_type }}">
+                            @error('user_type')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
