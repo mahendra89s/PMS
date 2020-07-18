@@ -18,6 +18,9 @@
         .btn:hover{
             background-color:#222831;
         }
+        #cancel{
+            background-color:red;
+        }
     </style>
 @endsection('css')
 @section('content')
@@ -51,15 +54,16 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="exampleFormControlInput1">User Type (1:Admin 0:User)</label>
                             <input type="text" name="user_type" class="form-control" id="exampleFormControlInput1" value="{{ $user->user_type }}">
                             @error('user_type')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <button type="submit" class="btn btn-dark">Submit</button>
+                            <a href="{{ route('admin.user') }}" id="cancel" class="btn btn-danger">Cancel</a>
                         </div>
                         </form>
                     </div>

@@ -16,6 +16,7 @@
   <!-- CSS Files -->
   <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('assets/css/now-ui-dashboard.css?v=1.5.0')}}" rel="stylesheet" />
+  @toastr_css
   @yield('css')
 </head>
 
@@ -52,8 +53,8 @@
               <p>Users</p>
             </a>
           </li>
-          <li class="{{ Route::is('admin.tables') ? 'active' : '' }}">
-            <a href="{{ route('admin.tables') }}">
+          <li class="{{ Route::is('admin.projects') ? 'active' : '' }}">
+            <a href="{{ route('admin.projects') }}">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Projects</p>
             </a>
@@ -114,7 +115,8 @@
   <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-  
+  @toastr_js
+  @toastr_render
   <!-- Chart JS -->
   <script src="{{asset('assets/js/plugins/chartjs.min.js')}}"></script>
   <!--  Notifications Plugin    -->

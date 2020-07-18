@@ -1,7 +1,7 @@
 @extends('Admin.layouts.master')
 
 @section('title')
-  Users
+  Projects
 @endsection('title')
 @section('css')
   <style>
@@ -13,26 +13,41 @@
 @section('content')
 <div class="panel-header">
         <div class="header text-center">
-          <h2 class="title">Users</h2>
+          <h2 class="title">Projects</h2>
         </div>
       </div>
+      
 <div class="content">
         <div class="row">
+        
           <div class="col-md-12">
             <div class="card">
               
               <div class="card-body">
+              <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+                    <div class="font-icon-detail">
+                      
+                      <a href="{{ route('project.add') }}" class="btn btn-danger text-right"><i class="now-ui-icons ui-1_simple-add"></i> Add Project</a>
+                    </div>
+              </div>
+              
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                        Name
+                        Project Name
                       </th>
                       <th>
-                        Email
+                        Client Name
                       </th>
                       <th>
-                        User Type
+                        Description
+                      </th>
+                      <th>
+                        Status
+                      </th>
+                      <th>
+                        Member
                       </th>
                       <th >
                         Edit
@@ -42,37 +57,42 @@
                       </th>
                     </thead>
                     <tbody>
-                   
-                    @foreach($users as $user)
+                    @foreach($projects as $project)
                       <tr>
                         <td>
-                          {{ $user->name }}
+                          {{ $project->project_name }}
                         </td>
                         <td>
-                          {{ $user->email }}
+                          {{ $project->client_name }}
                         </td>
                         <td>
-                          <?php
-                                if($user->user_type == 1){
-                                  $user1 = 'ADMIN';
-                                }
-                                else{
-                                  $user1 = 'USER';
-                                }
-                          ?>
-                          {{ $user1 }}
+                          {{ $project->description }}
+                        </td>
+                        
+                        <td>
+                          @php
+                            if($project->status == 1)
+                              {$status = 'Completed';}
+                            else
+                            {$status = 'Pending';}
+                          @endphp
+                          {{ $status }}
+                        </td>
+                        <td>
+                          <a href="{{ route('project.member',['id' => $project->id]) }} " class="btn btn-danger">Member</a>
                         </td>
                         <td >
-                          <form action="{{ route('user.edit',['id' => $user->id]) }}" method='GET'>
+                          <form action="{{ route('project.edit',['id' => $project->id]) }} " method='GET'>
                             @csrf
                             <button type="submit" class="btn btn-warning">Edit</button>
                           </form>
                           
                         </td>
                         <td >
-                          <form action="{{ route('user.delete',['id' => $user->id]) }}" method='POST'>
-                            @csrf
+                          <form action="{{ route('project.delete',['id' => $project->id]) }} " method='GET'>
+                            
                             <button type="submit" class="btn btn-danger">Delete</button>
+                            
                           </form>
                         </td>
                       </tr>

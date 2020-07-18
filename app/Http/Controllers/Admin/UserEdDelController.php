@@ -12,7 +12,7 @@ class UserEdDelController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'user_type' => 'required|boolean',
+            // 'user_type' => 'required|boolean',
         ]);
         
         
@@ -20,13 +20,15 @@ class UserEdDelController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'user_type' => $request->user_type,
+            // 'user_type' => $request->has('user_type'),
         ]);
+        toastr()->success('Data has been Updated successfully!');
         return redirect()->back();
     }
     public function delete(Request $request,$id){
         $user = User::find($id);
         $user->delete();
+        toastr()->success('Data has been Deleted successfully!');
         return redirect()->back();
     }
     public function show($id){
