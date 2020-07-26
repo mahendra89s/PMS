@@ -8,9 +8,14 @@ use App\Http\Controllers\Admin\UserEdDelController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['middleware' => ['auth','admin'] ,'prefix'=>'admin'],function(){
     Route::get('/',function(){
-        return view('Admin.dashboard');
+        $user = User::where('user_type',0)->count();
+        $project = Project::count();
+        $completed_project = Project::where('status',1)->count();
+        $pending_project = Project::where('status',0)->count();
+
+        return view('Admin.dashboard',compact('user', 'project', 'completed_project','pending_project'));
     })->name('admin.dashboard');
 
     Route::get('/notification',function(){
@@ -27,7 +32,7 @@ Route::group(['prefix'=>'admin'],function(){
         return view('Admin.user',compact('users'));
     })->name('admin.user');
 
-
+    
     Route::group(['prefix' => 'user-edit'],function(){
         Route::get('/{id}',function($id){
             $user = User::find($id);
@@ -91,3 +96,14 @@ Route::group(['prefix'=>'admin'],function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// User Side Routes
+
+Route::group(['prefix' => 'user','middleware' => ['auth']],function(){
+    
+    Route::get('/', 'User\UserController@index')->name('user.index');
+    Route::get('/manage/{id}','User\UserController@manage')->name('user.manage')->middleware('managetask');
+    Route::get('/add/{id}','User\TaskController@add')->name('task.add');
+    Route::post('/add-save/{pid}', 'User\TaskController@save')->name('task.save');
+});

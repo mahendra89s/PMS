@@ -79,7 +79,10 @@
                           {{ $status }}
                         </td>
                         <td>
-                          <a href="{{ route('project.member',['id' => $project->id]) }} " class="btn btn-danger">Member</a>
+                          <a href="{{ route('project.member',['id' => $project->id]) }} " class="btn btn-danger">
+                          
+                          Member
+                          </a>
                         </td>
                         <td >
                           <form action="{{ route('project.edit',['id' => $project->id]) }} " method='GET'>

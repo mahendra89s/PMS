@@ -29,7 +29,7 @@
       <div class="logo">
         
         <a href="#" class="simple-text logo-normal">
-          Admin Dashboard
+          Project Management System
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -86,8 +86,25 @@
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             
             <ul class="navbar-nav">
-              
-              <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    
+                                   ADMIN <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons location_world"></i>
@@ -101,7 +118,7 @@
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              
+               -->
             </ul>
           </div>
         </div>

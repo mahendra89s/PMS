@@ -16,7 +16,7 @@ class AddProjectController extends Controller
             'status' => 0,
         ]);
         toastr()->success("Project Added Successfully");
-        return redirect()->back();
+        return redirect()->route('admin.projects');
     }
     public function delete($id){
         $project = Project::findOrFail($id);

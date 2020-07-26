@@ -20,10 +20,11 @@ class UserEdDelController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+            'user_type' => $request->user_type,
             // 'user_type' => $request->has('user_type'),
         ]);
         toastr()->success('Data has been Updated successfully!');
-        return redirect()->back();
+        return redirect()->route('admin.user');
     }
     public function delete(Request $request,$id){
         $user = User::find($id);
