@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Task;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,5 +35,13 @@ class AddProjectController extends Controller
         ]);
         toastr()->success("Project Updated Successfully");
         return redirect()->route('admin.projects');
+    }
+    public function show($id)
+    {
+        $project = Project::findOrFail($id);
+        $mem = $project->users()->get(array('name'));
+        $task = Task::where('project_id','=',$id)->get();
+       
+        return view('Admin.projects.project-view',compact('project','mem','task'));
     }
 }

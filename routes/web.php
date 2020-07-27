@@ -51,6 +51,12 @@ Route::group(['middleware' => ['auth','admin'] ,'prefix'=>'admin'],function(){
         })->name('project.add');
 
 
+
+        Route::get('/show/{id}','Admin\AddProjectController@show')->name('project.show');
+
+
+
+
         Route::post('/add','Admin\AddProjectController@add')->name('project.add1');
         Route::get('/delete/{id}','Admin\AddProjectController@delete')->name('project.delete');
         

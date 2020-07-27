@@ -60,7 +60,7 @@
                     @foreach($projects as $project)
                       <tr>
                         <td>
-                          {{ $project->project_name }}
+                          <a href="{{ route('project.show',['id' => $project->id]) }}">{{ $project->project_name }}</a>
                         </td>
                         <td>
                           {{ $project->client_name }}
