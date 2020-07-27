@@ -72,11 +72,14 @@
                         <td>
                           @php
                             if($project->status == 1)
-                              {$status = 'Completed';}
+                              {$status = 'Completed';
+                              
+                              }
                             else
-                            {$status = 'Pending';}
+                            {$status = 'Pending';
+                            }
                           @endphp
-                          {{ $status }}
+                          <p class="{{ ($status == 'Completed')? 'text-success' : 'text-danger' }}">{{ $status }}</p>
                         </td>
                         <td>
                           <a href="{{ route('project.member',['id' => $project->id]) }} " class="btn btn-danger">

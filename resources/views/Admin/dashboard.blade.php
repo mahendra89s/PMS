@@ -16,7 +16,7 @@
           color:white;
         }
         .card{
-          background-color:#6b778d;
+          background-color:#3f51b5;
           border-radius:8px;
           box-shadow:0px 0px 57px -8px rgba(0,0,0,0.75);
         }
