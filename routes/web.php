@@ -110,6 +110,8 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function(){
     
     Route::get('/', 'User\UserController@index')->name('user.index');
     Route::get('/manage/{id}','User\UserController@manage')->name('user.manage')->middleware('managetask');
-    Route::get('/add/{id}','User\TaskController@add')->name('task.add');
+    Route::get('/add/{id}','User\TaskController@add')->name('task.add')->middleware('addtask');
     Route::post('/add-save/{pid}', 'User\TaskController@save')->name('task.save');
+    Route::get('/edit/{tid}{pid}','User\TaskController@edit')->name('task.edit')->middleware('edittask');
+    Route::post('/edit-save/{tid}','User\TaskController@store')->name('edit.save');
 });

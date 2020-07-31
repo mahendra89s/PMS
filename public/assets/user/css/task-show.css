@@ -1,3 +1,8 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
 .header{
     background-color:#424242;
     color:white;
@@ -62,15 +67,61 @@
 .status{
     float: left;
     clear: left;
+    
 }
 .status a{
     background-color:#3A4164;
     color:white;
     border-radius: 20px;
+    cursor: default !important;
 }
 #btn1{
     background-color:#BF360C;
+    cursor: default;
 }
 .status a:hover{
     color:white;
+}
+.sidedetails{
+    
+    background-color:#212121;
+    border-radius: 25px;
+    padding-top:15px;
+}
+.startdate{
+    color:white;
+    background-color:#4f5b62;
+    font-size:17px;
+    margin:0 10px;
+    border-radius: 20px;
+    padding:0 12px;
+    display: flex;
+    flex-direction:column;
+}
+.startdate p{
+    font-size: 17px;
+    margin-bottom: 0;
+}
+.completed{
+    color:white;
+    background-color:#4f5b62;
+    font-size:17px;
+    margin:10px 10px;
+    border-radius: 20px;
+    padding:0 12px;
+    display: flex;
+    flex-direction:column;
+}
+.completed p{
+    font-size: 17px;
+    margin-bottom: 0;
+}
+#edit{
+    background-color:#d84315;
+    border-radius: 20px;
+    color:white;
+    letter-spacing:2px;
+    font-weight: bold;
+    margin:10px 10px;
+   
 }

@@ -35,7 +35,8 @@ class UserController extends Controller
             $project = Project::findOrFail($id);
             $mem = $project->users()->get(array('name'));
             
-            $tasks = $project->tasks;
-            return view('User.task-show',compact('id','mem','tasks'));
+            $tasks = $project->tasks()->paginate(5);
+            $userid = Auth::id();
+            return view('User.task-show',compact('id','mem','tasks','userid'));
         }
 }

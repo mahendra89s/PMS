@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
@@ -15,4 +16,23 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('M d,Y h:i A');
+    }
+    public function getStartDateAttribute($value)
+    {
+        if(!is_null($value))
+        {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('M d,Y h:i A');
+        }
+    }
+    public function getEndDateAttribute($value)
+    {
+        if(!is_null($value))
+        {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('M d,Y h:i A');
+        }
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Task;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,32 @@ class TaskController extends Controller
         ]);
         toastr()->success('Task Added Successfully');
         return redirect()->back();
-
+    }
+    public function edit($tid , $pid)
+    {   
+        $task = Task::findOrFail($tid);
+        return view('User.task-edit',compact('task'));
+    }
+    public function store(Request $request,$tid)
+    {
+        $compt=NULL;
+        if(isset($request->completed))
+        {
+            $compt = Carbon::now();
+        }
+        $request->validate([
+            'task_title' => 'required',
+            'task_desc' => 'required',
+            'date_time' => 'required',
+        ]);
+        $task = Task::findOrFail($tid);
+        $task->update([
+            'title' => $request->task_title,
+            'Task_description' => $request->task_desc,
+            'start_date' => $request->date_time,
+            'end_date' => $compt,
+        ]);
+        toastr()->success("Updated Successfully");
+        return redirect()->back();
     }
 }

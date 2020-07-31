@@ -49,6 +49,10 @@
     background-color:#BF360C;
 }
 #btn1:hover{
+    background-color: white;
+    color:#BF360C;
+    font-weight: bold;
+    border:1px solid black;
     transform:scale(1.01,1.01);
 }
 .status a:hover{

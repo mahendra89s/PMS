@@ -17,6 +17,9 @@ User
     </div>
     <div class="container my-5">
         <div class="row">
+        @if(empty($projects))
+            <h1 style="color: white;">NO PROJECT ASSOCIATED<h1>
+        @endif
         @foreach($projects as $project)
             @foreach($project as $p)
             
