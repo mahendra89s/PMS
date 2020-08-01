@@ -28,7 +28,11 @@
     
     <div class="container my-5">
         <div class="row">
+        
         <div class=" col-md-8">
+        @if(count($tasks)<= 0)
+            <h1 style="color: white;">No Task Associated</h1>
+        @endif
             @foreach($tasks as $task)
                 <div class="card ">
                     <div class="card-body">
@@ -67,6 +71,7 @@
                                     <div class="edit">
                                         
                                         <a class="btn @if($task->user_id != $userid){ disabled } @endif" id="edit" href="{{ route('task.edit',['tid' => $task->id , 'pid' => $id]) }}">Edit</a>
+                                        <a class="btn @if($task->user_id != $userid){ disabled } @endif" id="delete" href="{{ route('task.delete',['tid' => $task->id , 'pid' => $id]) }}">Delete</a>
                                     </div>
                                 </div>
                             </div>

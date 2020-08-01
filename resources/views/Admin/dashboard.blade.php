@@ -16,13 +16,14 @@
           color:white;
         }
         .card{
-          background-color:#3f51b5;
+          background-color:#37474f;
           border-radius:8px;
           box-shadow:0px 0px 57px -8px rgba(0,0,0,0.75);
         }
         .now-ui-icons
         {
           font-size:50px;
+          color:white;
         }
       </style>
 @endsection('css')

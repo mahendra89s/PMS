@@ -114,4 +114,5 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function(){
     Route::post('/add-save/{pid}', 'User\TaskController@save')->name('task.save');
     Route::get('/edit/{tid}{pid}','User\TaskController@edit')->name('task.edit')->middleware('edittask');
     Route::post('/edit-save/{tid}','User\TaskController@store')->name('edit.save');
+    Route::get('/delete/{tid}{pid}','User\TaskController@delete')->name('task.delete');
 });

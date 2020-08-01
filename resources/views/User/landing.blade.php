@@ -24,7 +24,7 @@ User
             @foreach($project as $p)
             
            
-            <div class=" col-md-6">
+            <div class=" col-md-6 mb-5">
                 <div class="card ">
                     
                     <div class="card-body">

@@ -61,4 +61,11 @@ class TaskController extends Controller
         toastr()->success("Updated Successfully");
         return redirect()->back();
     }
+    public function delete($tid,$pid)
+    {
+        $task = Task::findOrFail($tid);
+        $task->delete();
+        toastr()->error("Deleted Successfully");
+        return redirect()->back();
+    }
 }

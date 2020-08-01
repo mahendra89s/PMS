@@ -32,10 +32,12 @@
     font-weight: bold;
     font-size:20px;
     padding:5px 20px;
+    
 }
 .addbtn a:hover .fa-plus{
     transition: 0.9s;
     transform: rotateZ(180deg);
+    
 }
 .card{
     background-color:#BDBDD7;
@@ -77,7 +79,7 @@
 }
 #btn1{
     background-color:#BF360C;
-    cursor: default;
+    cursor: pointer;
 }
 .status a:hover{
     color:white;
@@ -124,4 +126,13 @@
     font-weight: bold;
     margin:10px 10px;
    
+}
+#delete{
+    background-color:#004c40;
+    border-radius: 20px;
+    color:white;
+    letter-spacing:2px;
+    font-weight: bold;
+    margin:10px 10px;
+   float:right;
 }
