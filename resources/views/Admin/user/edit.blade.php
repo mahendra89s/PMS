@@ -5,8 +5,11 @@
 @endsection('title')
 @section('css')
     <style>
+    
         .card label{
             color:black;
+            font-weight:bold;
+            font-size:20px;
         }
         .form-control{
             border:1px solid #222831;
@@ -21,6 +24,7 @@
         #cancel{
             background-color:red;
         }
+        
     </style>
 @endsection('css')
 @section('content')

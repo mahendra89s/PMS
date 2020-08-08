@@ -5,6 +5,7 @@
 @endsection('title')
 @section('css')
     <style>
+    
       .card label{
             color:black;
         }
@@ -23,6 +24,7 @@
         }
         .card label{
           font-size:17px;
+          font-weight:bold;
         }
         textarea.form-control{
           border:1px solid #222831;

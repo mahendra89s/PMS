@@ -4,9 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Task;
 use Carbon\Carbon;
+use App\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\TaskAddedNotification;
 
 class TaskController extends Controller
 {
@@ -31,6 +33,12 @@ class TaskController extends Controller
             'user_id' => $uid ,
             'project_id' => $pid,
         ]);
+        Notification::create([
+            'message' => 'Added New Task ',
+            'user_id' => $uid,
+            'task_id' => $task->id,
+            'status' => 0,
+        ]);
         toastr()->success('Task Added Successfully');
         return redirect()->back();
     }
@@ -42,9 +50,11 @@ class TaskController extends Controller
     public function store(Request $request,$tid)
     {
         $compt=NULL;
+        $status = 0;
         if(isset($request->completed))
         {
             $compt = Carbon::now();
+            $status = 1;
         }
         $request->validate([
             'task_title' => 'required',
@@ -57,6 +67,13 @@ class TaskController extends Controller
             'Task_description' => $request->task_desc,
             'start_date' => $request->date_time,
             'end_date' => $compt,
+            'status' => $status,
+        ]);
+        Notification::create([
+            'message' => 'Updated Task ',
+            'user_id' => Auth::id(),
+            'task_id' => $tid,
+            'status' => 0,
         ]);
         toastr()->success("Updated Successfully");
         return redirect()->back();
@@ -65,6 +82,12 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($tid);
         $task->delete();
+        // Notification::create([
+        //     'message' => 'Deleted Task ',
+        //     'user_id' => Auth::id(),
+        //     'task_id' => $tid,
+        //     'status' => 0,
+        // ]);
         toastr()->error("Deleted Successfully");
         return redirect()->back();
     }

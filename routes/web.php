@@ -1,7 +1,9 @@
 <?php
 
+use App\Task;
 use App\User;
 use App\Project;
+use App\Notification;
 use App\Http\Controllers\Admin\UserEdDelController;
 
 
@@ -14,13 +16,16 @@ Route::group(['middleware' => ['auth','admin'] ,'prefix'=>'admin'],function(){
         $project = Project::count();
         $completed_project = Project::where('status',1)->count();
         $pending_project = Project::where('status',0)->count();
-
+        
         return view('Admin.dashboard',compact('user', 'project', 'completed_project','pending_project'));
     })->name('admin.dashboard');
 
     Route::get('/notification',function(){
-        return view('Admin.notifications');
+        $notifications = Notification::orderBy('id','desc')->paginate(10);
+        return view('Admin.notifications', compact('notifications'));
     })->name('admin.notifications');
+
+    Route::get('/noti/{id}','Admin\NotificationController@show')->name('notification.read');
 
     Route::get('/projects',function(){
         $projects = Project::all();
@@ -77,7 +82,7 @@ Route::group(['middleware' => ['auth','admin'] ,'prefix'=>'admin'],function(){
             return view('Admin.projects.member',compact('pro_mem','id'));
         })->name('project.member');
 
-        Route::get('/del/{mid}{pid}','Admin\MemberController@delete')->name('member.delete');
+        Route::get('/del/{mid}/{pid}','Admin\MemberController@delete')->name('member.delete');
 
 
 
@@ -94,7 +99,7 @@ Route::group(['middleware' => ['auth','admin'] ,'prefix'=>'admin'],function(){
             
             return view('Admin.projects.add-member',compact('user','project'));
         })->name('member.add');
-        Route::get('/add-mem/{id}{pid}','Admin\MemberController@add')->name('member.add1');
+        Route::get('/add-mem/{id}/{pid}','Admin\MemberController@add')->name('member.add1');
     });
     
 });
@@ -115,4 +120,9 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function(){
     Route::get('/edit/{tid}{pid}','User\TaskController@edit')->name('task.edit')->middleware('edittask');
     Route::post('/edit-save/{tid}','User\TaskController@store')->name('edit.save');
     Route::get('/delete/{tid}{pid}','User\TaskController@delete')->name('task.delete');
+});
+
+Route::get('/test',function(){
+    $task = Task::find(11);
+    return $task->notifications()->get();
 });

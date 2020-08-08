@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Task extends Model
 {
+    use Notifiable;
     protected $guarded = ['id'];
     public function project()
     {

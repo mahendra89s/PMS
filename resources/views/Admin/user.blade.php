@@ -5,8 +5,24 @@
 @endsection('title')
 @section('css')
   <style>
+    .card{
+      background-color: #d2d8d6;
+      background-image: linear-gradient(315deg, #d2d8d6 0%, #dce8e0 74%);
+      
+    }
     .table>thead>tr>th{
       font-weight: bold;
+      color:black;
+    }
+    #edit{
+      border-radius:20px;
+      background-color: #ff4e00;
+      background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+    }
+    #delete{
+      border-radius:20px;
+      background-color: #f71735;
+background-image: linear-gradient(147deg, #f71735 0%, #db3445 74%);
     }
   </style>
 @endsection('css')
@@ -66,14 +82,14 @@
                         <td >
                           <form action="{{ route('user.edit',['id' => $user->id]) }}" method='GET'>
                             @csrf
-                            <button type="submit" class="btn btn-warning">Edit</button>
+                            <button type="submit" class="btn btn-warning" id="edit">Edit</button>
                           </form>
                           
                         </td>
                         <td >
                           <form action="{{ route('user.delete',['id' => $user->id]) }}" method='POST'>
                             @csrf
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger" id="delete">Delete</button>
                           </form>
                         </td>
                       </tr>

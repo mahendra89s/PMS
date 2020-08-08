@@ -7,13 +7,19 @@ use App\User;
 @endsection('title')
 @section('css')
     <style>
+        .card{
+      background-color: #d2d8d6;
+      background-image: linear-gradient(315deg, #d2d8d6 0%, #dce8e0 74%);
+      
+    }
         .member{
             
             font-size:20px;
             margin-top:5px;
             padding-left:10px;
             font-weight:bold;
-            background-color:#303f9f;
+            background-color: #485461;
+background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
             border-radius:35px;
             color:white;
             margin-bottom:20px;
@@ -24,7 +30,8 @@ use App\User;
             margin-bottom:10px;
             padding-left:10px;
             font-weight:bold;
-            background-color:#303f9f;
+            background-color: #485461;
+background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
             padding:10px 20px;
         }
         .msg{
@@ -34,12 +41,12 @@ use App\User;
         #btn1{
             cursor:default;
             border-radius:25px;
-            background-color:#666ad1;
+            background-color: #212121;
         }
         #btn2{
             cursor:default;
             border-radius:25px;
-            background-color:#001970;
+            background-color:#000000;
         }
     </style>
 @endsection('css')

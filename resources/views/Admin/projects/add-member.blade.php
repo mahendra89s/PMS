@@ -4,7 +4,28 @@
   Add Member
 @endsection('title')
 @section('css')
-    
+<style>
+      #back{
+        border-radius:20px;
+        background-color: #f71735;
+        background-image: linear-gradient(147deg, #f71735 0%, #db3445 74%);
+      }
+      .card{
+      background-color: #d2d8d6;
+      background-image: linear-gradient(315deg, #d2d8d6 0%, #dce8e0 74%);
+      
+    }
+    .table>thead>tr>th{
+      font-weight: bold;
+      color:black;
+    }
+    #add{
+      border-radius:20px;
+      background-color: #7f5a83;
+background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+
+    }
+    </style>
 @endsection('css')
 @section('content')
 <div class="panel-header">
@@ -37,14 +58,14 @@
                             {{ $u->name }} 
                         </td>
                         <td>
-                            <a href="{{ route('member.add1',['id' => $u->id , 'pid' => $project->id]) }}" class="btn btn-info">Add</a>
+                            <a href="{{ route('member.add1',['id' => $u->id , 'pid' => $project->id]) }}" id="add" class="btn btn-info">Add</a>
                         </td>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
                 </div>
-                <a href="{{ route('project.member',['id' => $project->id]) }}" class="btn btn-danger">Back</a>
+                <a href="{{ route('project.member',['id' => $project->id]) }}" id="back" class="btn btn-danger">Back</a>
                 </div>
             </div>
         </div>
